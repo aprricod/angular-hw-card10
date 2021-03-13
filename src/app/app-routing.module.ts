@@ -6,6 +6,10 @@ import { MyProjectsComponent } from './my-projects/my-projects.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: MainPageComponent,
+  },
+  {
     path: 'about',
     component: AboutComponent,
   },
@@ -21,6 +25,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
