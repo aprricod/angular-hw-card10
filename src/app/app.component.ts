@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -9,7 +9,9 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'card10';
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: RouterEvent) => console.log(event));
+  }
 
   getHistory() {
     this.router.events
