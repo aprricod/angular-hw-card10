@@ -5,3 +5,14 @@
   <li><a [routerLink]="['/main']">Main</a></li>
   <li><a [routerLink]="['/projects']">My projects</a></li>
 </ul>
+
+<div style="margin: 20px">
+  <button mat-raised-button [matMenuTriggerFor]="menu">Меню</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item><a [routerLink]="['/main']">Main</a></button>
+    <button mat-menu-item><a [routerLink]="['/about']">About</a></button>
+    <button mat-menu-item>
+      <a [routerLink]="['/projects']">My projects</a>
+    </button>
+  </mat-menu>
+</div>
