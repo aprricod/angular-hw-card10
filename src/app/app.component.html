@@ -20,6 +20,12 @@
 <hr /> -->
 <div style="margin: 20px">
   <button mat-raised-button [matMenuTriggerFor]="menu">Меню</button>
+  <button mat-raised-button (click)="goToMainPage()" style="margin-left: 10px">
+    На главную
+  </button>
+  <button mat-stroked-button appBackButton style="margin-left: 10px">
+    Вернуться назад
+  </button>
   <mat-menu #menu="matMenu">
     <a [routerLink]="['/main']"><button mat-menu-item>Главная</button></a>
     <a [routerLink]="['/about']"><button mat-menu-item>Обо мне</button></a>
@@ -52,57 +58,103 @@
   </mat-menu>
 
   <mat-menu #hw1="matMenu">
-    <a href="https://github.com/aprricod/distance" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://github.com/aprricod/distance"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Пример ReadMe</button></a
     >
   </mat-menu>
 
   <mat-menu #hw2="matMenu">
-    <a href="https://stackblitz.com/github/aprricod/homework1-card2" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/homework1-card2"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Цвета радуги</button></a
     >
-    <a href="https://stackblitz.com/github/aprricod/angular-hw-card2-task10" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/angular-hw-card2-task10"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>10 компонентов</button></a
     >
-    <a href="https://stackblitz.com/github/aprricod/angular-hw-card2-task11" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/angular-hw-card2-task11"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Варианты template и styles</button></a
     >
     <a href="https://stackblitz.com/github/aprricod/angular-hw-card2-task12">
       <button mat-menu-item>Шахматная доска</button></a
     >
-    <a href="https://stackblitz.com/github/aprricod/angular-hw-card2-task15-1" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/angular-hw-card2-task15-1"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Ряд Фибоначчи</button></a
     >
   </mat-menu>
 
   <mat-menu #hw3="matMenu">
-    <a href="https://stackblitz.com/github/aprricod/angular-hw-card3-task5" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/angular-hw-card3-task5"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Пример Angular Material</button></a
     >
   </mat-menu>
 
   <mat-menu #hw4="matMenu">
-    <a href="https://stackblitz.com/github/aprricod/angular-hw-card4-task2" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/angular-hw-card4-task2"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Пример работы pipe и поиск</button></a
     >
-    <a href="https://stackblitz.com/github/aprricod/angular-card4-task3" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/angular-card4-task3"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Собственный JoinPipe</button></a
     >
-    <a href="https://stackblitz.com/github/aprricod/angular-hw-card4-task4" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/angular-hw-card4-task4"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Пример работы pipe и поиск</button></a
     >
   </mat-menu>
 
   <mat-menu #hw6="matMenu">
-    <a href="https://stackblitz.com/github/aprricod/angular-card6-task5" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/angular-card6-task5"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Таблица уроков</button></a
     >
   </mat-menu>
   <mat-menu #hw10="matMenu">
-    <a href="https://stackblitz.com/github/aprricod/angular-hw-card10" target="_blank" rel="noopener noreferrer">
+    <a
+      href="https://stackblitz.com/github/aprricod/angular-hw-card10"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button mat-menu-item>Сайт портфолио</button></a
     >
   </mat-menu>
 </div>
 <hr />
-<router-outlet></router-outlet>
+<div style="margin: 20px">
+  <router-outlet></router-outlet>
+</div>

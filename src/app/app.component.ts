@@ -26,4 +26,8 @@ export class AppComponent {
         console.log(urlAfterRedirects);
       });
   }
+
+  goToMainPage() {
+    this.router.navigate(['/main']);
+  }
 }
