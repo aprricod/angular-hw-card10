@@ -21,20 +21,22 @@
 <div style="margin: 20px">
   <button mat-raised-button [matMenuTriggerFor]="menu">Меню</button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>Главная</button>
-    <button mat-menu-item>Обо мне</button>
-    <button mat-menu-item [matMenuTriggerFor]="vertebrates">
-      <a [routerLink]="['/projects']">Мои проекты</a>
-    </button>
+    <a [routerLink]="['/main']"><button mat-menu-item>Главная</button></a>
+    <a [routerLink]="['/about']"><button mat-menu-item>Обо мне</button></a>
+    <a [routerLink]="['/projects']"
+      ><button mat-menu-item [matMenuTriggerFor]="myProjects">
+        Мои проекты
+      </button></a
+    >
   </mat-menu>
 
-  <mat-menu #vertebrates="matMenu">
+  <mat-menu #myProjects="matMenu">
     <button mat-menu-item [matMenuTriggerFor]="fish">Проект 1</button>
     <button mat-menu-item>Проект 2</button>
-    <button mat-menu-item [matMenuTriggerFor]="reptiles">
-      <a [routerLink]="['/main']">Проект 3</a>
-    </button>
-    <button mat-menu-item><a [routerLink]="['/main']">Проект 4</a></button>
+    <a [routerLink]="['/main']"
+      ><button mat-menu-item [matMenuTriggerFor]="reptiles">Проект 3</button
+    ></a>
+    <a [routerLink]="['/main']"><button mat-menu-item>Проект 4</button></a>
   </mat-menu>
 
   <mat-menu #fish="matMenu">
