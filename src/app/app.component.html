@@ -4,7 +4,7 @@
   <li><a [routerLink]="['/projects']">My projects</a></li>
 </ul> -->
 
-<div style="margin: 20px">
+<!-- <div style="margin: 20px">
   <button mat-raised-button [matMenuTriggerFor]="menu">Меню</button>
   <button mat-stroked-button appBackButton>Вернуться назад</button>
   <mat-menu #menu="matMenu">
@@ -15,6 +15,42 @@
     <button mat-menu-item>
       <a [routerLink]="['/projects']">My projects</a>
     </button>
+  </mat-menu>
+</div>
+<hr /> -->
+<div style="margin: 20px">
+  <button mat-raised-button [matMenuTriggerFor]="menu">Меню</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Главная</button>
+    <button mat-menu-item>Обо мне</button>
+    <button mat-menu-item [matMenuTriggerFor]="vertebrates">
+      <a [routerLink]="['/projects']">Мои проекты</a>
+    </button>
+  </mat-menu>
+
+  <mat-menu #vertebrates="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="fish">Проект 1</button>
+    <button mat-menu-item>Проект 2</button>
+    <button mat-menu-item [matMenuTriggerFor]="reptiles">
+      <a [routerLink]="['/main']">Проект 3</a>
+    </button>
+    <button mat-menu-item><a [routerLink]="['/main']">Проект 4</a></button>
+  </mat-menu>
+
+  <mat-menu #fish="matMenu">
+    <button mat-menu-item>Baikal oilfish</button>
+    <button mat-menu-item>Bala shark</button>
+    <button mat-menu-item>Ballan wrasse</button>
+    <button mat-menu-item>Bamboo shark</button>
+    <button mat-menu-item>Banded killifish</button>
+  </mat-menu>
+
+  <mat-menu #reptiles="matMenu">
+    <button mat-menu-item>Banded Day Gecko</button>
+    <button mat-menu-item>Banded Gila Monster</button>
+    <button mat-menu-item>Black Tree Monitor</button>
+    <button mat-menu-item>Blue Spiny Lizard</button>
+    <button mat-menu-item disabled>Velociraptor</button>
   </mat-menu>
 </div>
 <hr />
