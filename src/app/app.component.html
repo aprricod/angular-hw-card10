@@ -31,28 +31,77 @@
   </mat-menu>
 
   <mat-menu #myProjects="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="fish">Проект 1</button>
-    <button mat-menu-item>Проект 2</button>
-    <a [routerLink]="['/main']"
-      ><button mat-menu-item [matMenuTriggerFor]="reptiles">Проект 3</button
-    ></a>
-    <a [routerLink]="['/main']"><button mat-menu-item>Проект 4</button></a>
+    <button mat-menu-item [matMenuTriggerFor]="hw1">
+      Самостоятельная работа 1
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="hw2">
+      Самостоятельная работа 2
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="hw3">
+      Самостоятельная работа 3
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="hw4">
+      Самостоятельная работа 4
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="hw6">
+      Самостоятельная работа 6, 7, 8
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="hw10">
+      Самостоятельная работа 10, 11
+    </button>
   </mat-menu>
 
-  <mat-menu #fish="matMenu">
-    <button mat-menu-item>Baikal oilfish</button>
-    <button mat-menu-item>Bala shark</button>
-    <button mat-menu-item>Ballan wrasse</button>
-    <button mat-menu-item>Bamboo shark</button>
-    <button mat-menu-item>Banded killifish</button>
+  <mat-menu #hw1="matMenu">
+    <a href="https://github.com/aprricod/distance">
+      <button mat-menu-item>Пример ReadMe</button></a
+    >
   </mat-menu>
 
-  <mat-menu #reptiles="matMenu">
-    <button mat-menu-item>Banded Day Gecko</button>
-    <button mat-menu-item>Banded Gila Monster</button>
-    <button mat-menu-item>Black Tree Monitor</button>
-    <button mat-menu-item>Blue Spiny Lizard</button>
-    <button mat-menu-item disabled>Velociraptor</button>
+  <mat-menu #hw2="matMenu">
+    <a href="https://stackblitz.com/github/aprricod/homework1-card2">
+      <button mat-menu-item>Цвета радуги</button></a
+    >
+    <a href="https://stackblitz.com/github/aprricod/angular-hw-card2-task10">
+      <button mat-menu-item>10 компонентов</button></a
+    >
+    <a href="https://stackblitz.com/github/aprricod/angular-hw-card2-task11">
+      <button mat-menu-item>Варианты template и styles</button></a
+    >
+    <a href="https://stackblitz.com/github/aprricod/angular-hw-card2-task12">
+      <button mat-menu-item>Шахматная доска</button></a
+    >
+    <a href="https://stackblitz.com/github/aprricod/angular-hw-card2-task15-1">
+      <button mat-menu-item>Ряд Фибоначчи</button></a
+    >
+  </mat-menu>
+
+  <mat-menu #hw3="matMenu">
+    <a href="https://stackblitz.com/github/aprricod/angular-hw-card3-task5">
+      <button mat-menu-item>Пример Angular Material</button></a
+    >
+  </mat-menu>
+
+  <mat-menu #hw4="matMenu">
+    <a href="https://stackblitz.com/github/aprricod/angular-hw-card4-task2">
+      <button mat-menu-item>Пример работы pipe и поиск</button></a
+    >
+    <a href="https://stackblitz.com/github/aprricod/angular-card4-task3">
+      <button mat-menu-item>Собственный JoinPipe</button></a
+    >
+    <a href="https://stackblitz.com/github/aprricod/angular-hw-card4-task4">
+      <button mat-menu-item>Пример работы pipe и поиск</button></a
+    >
+  </mat-menu>
+
+  <mat-menu #hw6="matMenu">
+    <a href="https://stackblitz.com/github/aprricod/angular-card6-task5">
+      <button mat-menu-item>Таблица уроков</button></a
+    >
+  </mat-menu>
+  <mat-menu #hw10="matMenu">
+    <a href="https://stackblitz.com/github/aprricod/angular-hw-card10">
+      <button mat-menu-item>Сайт портфолио</button></a
+    >
   </mat-menu>
 </div>
 <hr />
