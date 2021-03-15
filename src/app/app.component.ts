@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -11,7 +12,11 @@ import { NavServiceService } from './nav-service.service';
 export class AppComponent {
   title = 'card10';
 
-  constructor(private navigation: NavServiceService, private router: Router) {
+  constructor(
+    private navigation: NavServiceService,
+    private router: Router,
+    private location: Location
+  ) {
     this.router.events.subscribe((event: RouterEvent) => console.log(event));
   }
 
@@ -29,5 +34,13 @@ export class AppComponent {
 
   goToMainPage() {
     this.router.navigate(['/main']);
+  }
+
+  goBack() {
+    this.location.back();
+  }
+
+  goForward() {
+    this.location.forward();
   }
 }

@@ -23,8 +23,15 @@
   <button mat-raised-button (click)="goToMainPage()" style="margin-left: 10px">
     На главную
   </button>
-  <button mat-stroked-button appBackButton style="margin-left: 10px">
+  <!-- кнопка через дерективу -->
+  <!-- <button mat-stroked-button appBackButton style="margin-left: 10px">
     Вернуться назад
+  </button> -->
+  <button mat-raised-button (click)="goBack()" style="margin-left: 10px">
+    Назад
+  </button>
+  <button mat-raised-button (click)="goForward()" style="margin-left: 10px">
+    Вперед
   </button>
   <mat-menu #menu="matMenu">
     <a [routerLink]="['/main']"><button mat-menu-item>Главная</button></a>
