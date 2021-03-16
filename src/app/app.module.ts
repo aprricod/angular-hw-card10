@@ -13,9 +13,11 @@ import { AppComponent } from './app.component';
 import { BackButtonDirective } from './back-button.directive';
 import { MainPageModule } from './main-page/main-page.module';
 import { MyProjectsModule } from './my-projects/my-projects.module';
+import { NavServiceService } from './nav-service.service';
+import { Page404Component } from './page404/page404.component';
 
 @NgModule({
-  declarations: [AppComponent, BackButtonDirective],
+  declarations: [AppComponent, BackButtonDirective, Page404Component],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,7 +32,7 @@ import { MyProjectsModule } from './my-projects/my-projects.module';
     MatDividerModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [NavServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
