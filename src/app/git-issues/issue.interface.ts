@@ -4,6 +4,7 @@ export interface Issue {
   title: string;
   body: string;
   url: string;
+  userdata?: string;
   user: {
     login: string;
     url: string;
