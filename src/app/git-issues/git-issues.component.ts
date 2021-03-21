@@ -41,7 +41,7 @@ import { Issue, Issues } from './issue.interface';
 export class GitIssuesComponent implements OnInit, OnChanges {
   issues;
   dataSource;
-  columnsToDisplay = ['state', 'created_at', 'title', 'url', 'userdata'];
+  columnsToDisplay = ['id', 'state', 'created_at', 'title', 'url', 'userdata'];
   // columnsToDisplay = ['Статус', 'Дата/время создания', 'Название', 'Ссылка', 'Автор'];
   expandedElement: Issue[] | null;
   issueForm: FormGroup;
@@ -75,11 +75,7 @@ export class GitIssuesComponent implements OnInit, OnChanges {
   //   this.gitServ.postIssue(title, body);
   // }
 
-  createIssue() {
-    this.gitServ.postIssue(this.issues);
-  }
-
-  ngAfterViewInit() {
+  refreshIssueList() {
     this.gitServ.getIssues().subscribe((issues: Issues) => {
       this.issueForm = this.fb.group({
         issues: this.fb.array([]),
@@ -89,6 +85,7 @@ export class GitIssuesComponent implements OnInit, OnChanges {
         (this.issueForm.get('issues') as FormArray).insert(
           index,
           this.fb.group({
+            id: this.fb.control(issue.number),
             state: this.fb.control(issue.state),
             created_at: this.fb.control(
               this.pipe.transform(issue.created_at, 'dd.mm.yyyy HH:mm')
@@ -108,6 +105,10 @@ export class GitIssuesComponent implements OnInit, OnChanges {
     });
   }
 
+  ngAfterViewInit() {
+    this.refreshIssueList();
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(AddIssueComponent);
 
@@ -116,8 +117,9 @@ export class GitIssuesComponent implements OnInit, OnChanges {
     });
   }
 
-  openDialogComment() {
-    const dialogRef = this.dialog.open(AddCommentComponent);
+  openDialogComment(number) {
+    console.log(number);
+    const dialogRef = this.dialog.open(AddCommentComponent, { data: number });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);

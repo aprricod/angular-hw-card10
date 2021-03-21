@@ -16,21 +16,6 @@ export class GitService {
     );
   }
 
-  //   postIssue(title, body): void {
-  //     this.http
-  //       .post('https://api.github.com/repos/aprricod/angular-hw-card10/issues', {
-  //         owner: 'aprricod',
-  //         repo: 'angular-hw-card10',
-  //         title: title,
-  //         body: body,
-  //       })
-  //       .subscribe((data) => {
-  //         console.log(data);
-  //       });
-  //     this.router.navigate(['issues']);
-  //   }
-  // }
-
   postIssue(issue: Issue) {
     this.http
       .post('https://api.github.com/repos/aprricod/angular-hw-card10/issues', {
@@ -53,7 +38,7 @@ export class GitService {
   postComment(issueNumber, body) {
     this.http
       .post(
-        'https://api.github.com/repos/aprricod/angular-hw-card10/issues' +
+        'https://api.github.com/repos/aprricod/angular-hw-card10/issues/' +
           issueNumber +
           '/comments',
         {
@@ -68,10 +53,10 @@ export class GitService {
       });
   }
 
-  resolvedIssue(issueNumber) {
+  resolveIssue(issueNumber: number) {
     this.http
       .put(
-        'https://api.github.com/repos/aprricod/angular-hw-card10/issues' +
+        'https://api.github.com/repos/aprricod/angular-hw-card10/issues/' +
           issueNumber +
           '/lock',
         {
@@ -87,7 +72,7 @@ export class GitService {
 
     this.http
       .patch(
-        'https://api.github.com/repos/aprricod/angular-hw-card10/issues' +
+        'https://api.github.com/repos/aprricod/angular-hw-card10/issues/' +
           issueNumber,
         {
           owner: 'aprricod',

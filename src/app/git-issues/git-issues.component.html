@@ -1,12 +1,17 @@
 <form *ngIf="issueForm" [formGroup]="issueForm">
   <div style="text-align: right">
+    <button mat-raised-button style="margin: 5px" (click)="refreshIssueList()">
+      Обновить список
+      <!-- <mat-icon>Новый тикет</mat-icon> -->
+    </button>
     <button
       mat-raised-button
       color="warn"
       style="margin: 5px"
       (click)="openDialog()"
     >
-      <mat-icon>Новый тикет</mat-icon>
+      Новый тикет
+      <!-- <mat-icon>Новый тикет</mat-icon> -->
     </button>
   </div>
   <ng-container formArrayName="issues">
@@ -41,7 +46,7 @@
               element == expandedElement ? 'expanded' : 'collapsed'
             "
           >
-            <!-- другой вариант -->
+            <!-- ниже вставлять код -->
 
             <div class="example-element-weight">
               <mat-form-field appearance="outline">
@@ -49,40 +54,18 @@
               /></mat-form-field>
             </div>
             <div style="margin: 10px">
-              <!-- <button
-                mat-raised-button
-                color="primary"
-                style="margin-right: 10px"
-                (click)="openDialogComment()"
-              >
-                Оставить комментарий
-              </button>
-              <button
-                mat-raised-button
-                color="primary"
-                style="margin-right: 10px"
-                (click)="send()"
-              >
-                Закрыть
-              </button>
-              <button
-                mat-raised-button
-                color="primary"
-                style="margin-right: 10px"
-                (click)="send()"
-              >
-                Удалить
-              </button> -->
               <button>
                 <img
                   src="../../assets/replay-24px.svg"
-                  (click)="openDialogComment()"
+                  (click)="openDialogComment(element.value.id)"
                 />
               </button>
             </div>
           </div>
         </td>
       </ng-container>
+
+      <!-- выше вставлять код -->
 
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
       <tr
@@ -99,27 +82,10 @@
       ></tr>
     </table>
   </ng-container>
-
-  <!-- <button (click)="createIssue()">post</button>
-  <button>
-    <a
-      href="https://github.com/aprricod/angular-hw-card10/issues"
-      target="_blank"
-      rel="noopener noreferrer"
-      >список ишью на github</a
-    >
-  </button> -->
 </form>
 
-<!-- <hr />
-
-<app-add-comment></app-add-comment>
-
-<hr />
-
-<app-add-issue></app-add-issue> -->
-
 <!-- вместо этого куска вставил другой -->
+
 <!-- <div class="example-element-diagram">
     <div class="example-element-position">
       {{ element.value.state }}
@@ -165,22 +131,32 @@
                 Удалить
               </button>
             </div>
+                <div style="margin: 10px">
+              <button>
+                <img
+                  src="../../assets/replay-24px.svg"
+                  (click)="openDialogComment()"
+                />
+              </button>
+            </div>
 </div>
 </td>
 </ng-container> -->
 
 <!-- другой вариант -->
-<!-- <div
-class="example-element-detail"
-[@detailExpand]="
-  element == expandedElement ? 'expanded' : 'collapsed'
-"
->
-<div class="example-element-weight">
-  <mat-form-field appearance="outline">
-    <input matInput type="text" formControlName="body"
-  /></mat-form-field>
-</div>
+<!-- <div class="example-element-weight">
+    <mat-form-field appearance="outline">
+      <input matInput type="text" formControlName="body"
+    /></mat-form-field>
+  </div>
+  <div style="margin: 10px">
+    <button>
+      <img
+        src="../../assets/replay-24px.svg"
+        (click)="openDialogComment()"
+      />
+    </button>
+  </div>
 </div>
 </td>
 </ng-container> -->
