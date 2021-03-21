@@ -1,0 +1,59 @@
+<!-- <div style="width: 50%"> -->
+<mat-card class="example-card">
+  <form class="example-form" [formGroup]="issueSendForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>Укажите заголовок</mat-label>
+      <input matInput placeholder="Заголовок" formControlName="title" />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width">
+      <mat-label>Поле для описания</mat-label>
+      <textarea
+        matInput
+        placeholder="Описание"
+        formControlName="body"
+      ></textarea>
+    </mat-form-field>
+  </form>
+  <!-- <button
+    mat-raised-button
+    color="primary"
+    (click)="resetForm()"
+    style="margin-right: 10px"
+  >
+    Очистить
+  </button> -->
+  <button
+    mat-raised-button
+    color="warn"
+    mat-dialog-close
+    style="margin-right: 10px"
+  >
+    Отмена
+  </button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="send()"
+    mat-dialog-close
+    cdkFocusInitial
+  >
+    Отправить
+  </button>
+</mat-card>
+<!-- </div> -->
+<!-- 
+<mat-card class="example-card">
+  <form class="example-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Input</mat-label>
+      <input matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Textarea</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+  </form>
+</mat-card> -->

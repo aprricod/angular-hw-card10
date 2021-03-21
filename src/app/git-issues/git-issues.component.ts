@@ -5,10 +5,22 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import {
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { AddCommentComponent } from './add-comment.component';
+import { AddIssueComponent } from './add-issue.component';
 import { GitService } from './git.service';
-import { Issue } from './issue.interface';
+import { Issue, Issues } from './issue.interface';
 
 @Component({
   selector: 'app-git-issues',
@@ -24,33 +36,97 @@ import { Issue } from './issue.interface';
       ),
     ]),
   ],
+  providers: [DatePipe],
 })
-export class GitIssuesComponent implements OnInit, AfterViewInit {
+export class GitIssuesComponent implements OnInit, OnChanges {
   issues;
   dataSource;
-  columnsToDisplay = ['state', 'created_at', 'title', 'url'];
+  columnsToDisplay = ['state', 'created_at', 'title', 'url', 'userdata'];
+  // columnsToDisplay = ['Статус', 'Дата/время создания', 'Название', 'Ссылка', 'Автор'];
   expandedElement: Issue[] | null;
-  constructor(private gitServ: GitService) {
-    this.gitServ.getIssues().subscribe((issuesData: Issue[]) => {
-      this.dataSource = issuesData;
-    });
-  }
+  issueForm: FormGroup;
+  DatePipe: any;
 
-  viewIssues() {
-    this.gitServ.getIssues().subscribe((data) => {
-      this.issues = data;
-      console.log(this.issues);
-    });
-  }
-  ngOnInit(): void {
-    this.viewIssues();
-  }
-
+  // issueFormArray: FormArray;
   @ViewChild(MatSort) sort: MatSort;
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+  constructor(
+    private gitServ: GitService,
+    private fb: FormBuilder,
+    private pipe: DatePipe,
+    public dialog: MatDialog
+  ) {
+    // this.gitServ.getIssues().subscribe((issuesData: Issue[]) => {
+    //   this.dataSource = issuesData;
+    // });
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // this.dataSource = new MatTableDataSource(this.issueFormArray.controls);
+  }
+
+  ngOnInit(): void {}
+
+  // createIssue(title, body) {
+  //   const issue = {
+  //     title: 'Тестовый заголовок',
+  //     body: 'Тестовое описание',
+  //   };
+  //   this.gitServ.postIssue(title, body);
+  // }
+
+  createIssue() {
+    this.gitServ.postIssue(this.issues);
+  }
+
+  ngAfterViewInit() {
+    this.gitServ.getIssues().subscribe((issues: Issues) => {
+      this.issueForm = this.fb.group({
+        issues: this.fb.array([]),
+      });
+
+      issues.forEach((issue, index) =>
+        (this.issueForm.get('issues') as FormArray).insert(
+          index,
+          this.fb.group({
+            state: this.fb.control(issue.state),
+            created_at: this.fb.control(
+              this.pipe.transform(issue.created_at, 'dd.mm.yyyy HH:mm')
+            ),
+            title: this.fb.control(issue.title),
+            url: this.fb.control(issue.url),
+            userdata: this.fb.control(issue.user.login),
+            body: this.fb.control(issue.body),
+          })
+        )
+      );
+
+      this.dataSource = new MatTableDataSource(
+        (this.issueForm.get('issues') as FormArray).controls
+      );
+      this.dataSource.sort = this.sort;
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AddIssueComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openDialogComment() {
+    const dialogRef = this.dialog.open(AddCommentComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  // ngAfterViewInit() {
+  //   this.dataSource.sort = this.sort;
+  // }
 }
 
 // export interface PeriodicElement {

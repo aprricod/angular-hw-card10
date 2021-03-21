@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
   HttpEvent,
+  HttpHandler,
   HttpInterceptor,
+  HttpRequest,
 } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -18,8 +18,8 @@ export class AuthInterceptor implements HttpInterceptor {
     request = request.clone({
       setHeaders: {
         Authorization:
-          'basic' +
-          btoa('aprricod' + ':' + '6eb8ea9b1cc0d90081a39356ff84645320d8fa52'),
+          'Basic ' +
+          btoa('aprricod' + ':' + '537bed4483a6db315d37454c891f04443a08a3ed'),
       },
     });
     return next.handle(request);

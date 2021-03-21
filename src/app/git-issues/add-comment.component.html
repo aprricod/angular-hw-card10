@@ -1,0 +1,47 @@
+<div style="width: 50%">
+  <mat-card class="example-card">
+    <form class="example-form" [formGroup]="commentSendForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Укажите номер issue</mat-label>
+        <input matInput placeholder="Номер" formControlName="issueNumber" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Комментарий</mat-label>
+        <textarea
+          matInput
+          placeholder="Описание"
+          formControlName="body"
+        ></textarea>
+      </mat-form-field>
+    </form>
+
+    <table>
+      <tr>
+        <td>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="sendComment()"
+            mat-dialog-close
+            cdkFocusInitial
+          >
+            Отправить комментарий
+          </button>
+        </td>
+        <td></td>
+        <td>
+          <button
+            mat-raised-button
+            color="primary"
+            style="margin-right: 10px"
+            (click)="closeIssue()"
+            mat-dialog-close
+          >
+            Закрыть issue
+          </button>
+        </td>
+      </tr>
+    </table>
+  </mat-card>
+</div>

@@ -1,68 +1,186 @@
-<table
-  mat-table
-  [dataSource]="dataSource"
-  multiTemplateDataRows
-  class="mat-elevation-z8"
-  matSort
->
-  <ng-container
-    matColumnDef="{{ column }}"
-    *ngFor="let column of columnsToDisplay"
-  >
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ column }}</th>
-    <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
-  </ng-container>
-
-  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-  <ng-container matColumnDef="expandedDetail">
-    <td
-      mat-cell
-      *matCellDef="let element"
-      [attr.colspan]="columnsToDisplay.length"
+<form *ngIf="issueForm" [formGroup]="issueForm">
+  <div style="text-align: right">
+    <button
+      mat-raised-button
+      color="warn"
+      style="margin: 5px"
+      (click)="openDialog()"
     >
-      <div
-        class="example-element-detail"
-        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+      <mat-icon>Новый тикет</mat-icon>
+    </button>
+  </div>
+  <ng-container formArrayName="issues">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      multiTemplateDataRows
+      class="mat-elevation-z8"
+      matSort
+    >
+      <ng-container
+        matColumnDef="{{ column }}"
+        *ngFor="let column of columnsToDisplay"
       >
-        <div class="example-element-diagram">
-          <div class="example-element-position">{{ element.state }}</div>
-          <div class="example-element-symbol">
-            {{ element.created_at | date: "dd.mm.yyyy HH:mm" }}
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ column }}</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.value[column] }}
+        </td>
+      </ng-container>
+
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [formGroup]="element"
+          [attr.colspan]="columnsToDisplay.length"
+        >
+          <div
+            class="example-element-detail"
+            [@detailExpand]="
+              element == expandedElement ? 'expanded' : 'collapsed'
+            "
+          >
+            <!-- другой вариант -->
+
+            <div class="example-element-weight">
+              <mat-form-field appearance="outline">
+                <input matInput type="text" formControlName="body"
+              /></mat-form-field>
+            </div>
+            <div style="margin: 10px">
+              <!-- <button
+                mat-raised-button
+                color="primary"
+                style="margin-right: 10px"
+                (click)="openDialogComment()"
+              >
+                Оставить комментарий
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                style="margin-right: 10px"
+                (click)="send()"
+              >
+                Закрыть
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                style="margin-right: 10px"
+                (click)="send()"
+              >
+                Удалить
+              </button> -->
+              <button>
+                <img
+                  src="../../assets/replay-24px.svg"
+                  (click)="openDialogComment()"
+                />
+              </button>
+            </div>
           </div>
-          <div class="example-element-name">{{ element.title }}</div>
-          <div class="example-element-weight">{{ element.url }}</div>
-        </div>
-        <div class="example-element-description">
-          {{ element.body }}
-          <span class="example-element-description-attribution">
-            -- Автор репорта
-          </span>
-        </div>
-      </div>
-    </td>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr
+        mat-row
+        *matRowDef="let element; columns: columnsToDisplay"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['expandedDetail']"
+        class="example-detail-row"
+      ></tr>
+    </table>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr
-    mat-row
-    *matRowDef="let element; columns: columnsToDisplay"
-    class="example-element-row"
-    [class.example-expanded-row]="expandedElement === element"
-    (click)="expandedElement = expandedElement === element ? null : element"
-  ></tr>
-  <tr
-    mat-row
-    *matRowDef="let row; columns: ['expandedDetail']"
-    class="example-detail-row"
-  ></tr>
-</table>
+  <!-- <button (click)="createIssue()">post</button>
+  <button>
+    <a
+      href="https://github.com/aprricod/angular-hw-card10/issues"
+      target="_blank"
+      rel="noopener noreferrer"
+      >список ишью на github</a
+    >
+  </button> -->
+</form>
 
-<table style="width: auto">
-  <tr *ngFor="let issue of issues">
-    <td>
-      <pre>{{ issue.user.login }}, {{ issue.user.url }}</pre>
-    </td>
-  </tr>
+<!-- <hr />
 
-  <button (click)="viewIssues()">загрузить issues</button>
-</table>
+<app-add-comment></app-add-comment>
+
+<hr />
+
+<app-add-issue></app-add-issue> -->
+
+<!-- вместо этого куска вставил другой -->
+<!-- <div class="example-element-diagram">
+    <div class="example-element-position">
+      {{ element.value.state }}
+    </div>
+    <div class="example-element-symbol">
+      {{ element.created_at }}
+    </div>
+    <div class="example-element-name">{{ element.value.title }}</div>
+    <div class="example-element-weight">{{ element.value.url }}</div>
+    <div class="example-element-weight">
+      {{ element.value.userdata }}
+    </div>
+  </div>
+  <div class="example-element-description">
+    {{ element.value.body }}
+    <span class="example-element-description-attribution">
+      -- Автор репорта
+    </span>
+  </div>
+         <div style="margin: 10px">
+              <button
+                mat-raised-button
+                color="primary"
+                style="margin-right: 10px"
+                (click)="send()"
+              >
+                Оставить комментарий
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                style="margin-right: 10px"
+                (click)="send()"
+              >
+                Закрыть
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                style="margin-right: 10px"
+                (click)="send()"
+              >
+                Удалить
+              </button>
+            </div>
+</div>
+</td>
+</ng-container> -->
+
+<!-- другой вариант -->
+<!-- <div
+class="example-element-detail"
+[@detailExpand]="
+  element == expandedElement ? 'expanded' : 'collapsed'
+"
+>
+<div class="example-element-weight">
+  <mat-form-field appearance="outline">
+    <input matInput type="text" formControlName="body"
+  /></mat-form-field>
+</div>
+</div>
+</td>
+</ng-container> -->
