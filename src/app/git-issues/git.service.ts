@@ -11,7 +11,7 @@ export class GitService {
 
   getIssues() {
     return this.http.get(
-      'https://api.github.com/repos/aprricod/angular-hw-card11/issues'
+      'https://api.github.com/repos/aprricod/angular-hw-card10/issues'
     );
   }
 }

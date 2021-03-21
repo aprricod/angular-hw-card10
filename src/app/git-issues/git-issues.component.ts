@@ -5,7 +5,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { GitService } from './git.service';
 import { Issue } from './issue.interface';
 
@@ -24,7 +25,7 @@ import { Issue } from './issue.interface';
     ]),
   ],
 })
-export class GitIssuesComponent implements OnInit {
+export class GitIssuesComponent implements OnInit, AfterViewInit {
   issues;
   dataSource;
   columnsToDisplay = ['state', 'created_at', 'title', 'url'];
@@ -43,6 +44,12 @@ export class GitIssuesComponent implements OnInit {
   }
   ngOnInit(): void {
     this.viewIssues();
+  }
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 }
 
