@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MyProjectsComponent } from './my-projects/my-projects.component';
+import { Page404Component } from './page404/page404.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,15 @@ const routes: Routes = [
   {
     path: 'projects',
     component: MyProjectsComponent,
+  },
+  {
+    path: '404',
+    component: Page404Component,
+  },
+  {
+    path: '**',
+    redirectTo: '404',
+    pathMatch: 'full',
   },
 ];
 

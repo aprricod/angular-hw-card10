@@ -15,6 +15,7 @@ import { MainPageModule } from './main-page/main-page.module';
 import { MyProjectsModule } from './my-projects/my-projects.module';
 import { NavServiceService } from './nav-service.service';
 import { Page404Component } from './page404/page404.component';
+import { FinalTaskModule } from './final-task/final-task.module';
 
 @NgModule({
   declarations: [AppComponent, BackButtonDirective, Page404Component],
@@ -31,6 +32,7 @@ import { Page404Component } from './page404/page404.component';
     MatButtonModule,
     MatDividerModule,
     FormsModule,
+    FinalTaskModule,
   ],
   providers: [NavServiceService],
   bootstrap: [AppComponent],
