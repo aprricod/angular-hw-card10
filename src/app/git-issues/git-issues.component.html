@@ -24,15 +24,17 @@
         [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
       >
         <div class="example-element-diagram">
-          <div class="example-element-position">{{ element.position }}</div>
-          <div class="example-element-symbol">{{ element.symbol }}</div>
-          <div class="example-element-name">{{ element.name }}</div>
-          <div class="example-element-weight">{{ element.weight }}</div>
+          <div class="example-element-position">{{ element.state }}</div>
+          <div class="example-element-symbol">
+            {{ element.created_at | date: "dd.mm.yyyy HH:mm" }}
+          </div>
+          <div class="example-element-name">{{ element.title }}</div>
+          <div class="example-element-weight">{{ element.url }}</div>
         </div>
         <div class="example-element-description">
-          {{ element.description }}
+          {{ element.body }}
           <span class="example-element-description-attribution">
-            -- Wikipedia
+            -- Автор репорта
           </span>
         </div>
       </div>
@@ -52,4 +54,14 @@
     *matRowDef="let row; columns: ['expandedDetail']"
     class="example-detail-row"
   ></tr>
+</table>
+
+<table style="width: auto">
+  <tr *ngFor="let issue of issues">
+    <td>
+      <pre>{{ issue.user.login }}, {{ issue.user.url }}</pre>
+    </td>
+  </tr>
+
+  <button (click)="viewIssues()">загрузить issues</button>
 </table>

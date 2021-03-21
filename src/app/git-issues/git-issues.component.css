@@ -34,7 +34,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-symbol {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 20px;
   line-height: normal;
 }
 
