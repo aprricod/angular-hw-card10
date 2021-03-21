@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { GitIssuesComponent } from './git-issues/git-issues.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MyProjectsComponent } from './my-projects/my-projects.component';
 import { Page404Component } from './page404/page404.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'projects',
     component: MyProjectsComponent,
+  },
+  {
+    path: 'issues',
+    component: GitIssuesComponent,
   },
   {
     path: '404',
