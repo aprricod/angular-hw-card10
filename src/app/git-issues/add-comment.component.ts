@@ -22,6 +22,7 @@ export class AddCommentComponent {
     });
   }
   sendComment(): void {
+    this.serv.postComment(this.num, this.commentSendForm.value.body);
     // if (!this.commentSendForm.value.issueNumber) {
     //   this.commentSendForm.get('issueNumber').setValue(this.commentSendForm.value.body);
     // }
@@ -29,7 +30,6 @@ export class AddCommentComponent {
   }
 
   closeIssue() {
-    this.serv.postComment(this.num, this.commentSendForm.value.body);
     this.serv.resolveIssue(this.num);
     console.log(this.num);
   }
