@@ -78,7 +78,7 @@ export class GitService {
           owner: 'aprricod',
           repo: 'angular-hw-card10',
           issue_number: issueNumber,
-          lock_reason: 'closed',
+          state: 'closed',
         }
       )
       .subscribe((data) => {

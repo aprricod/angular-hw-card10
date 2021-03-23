@@ -14,7 +14,7 @@ export class AddCommentComponent {
   panelOpenState = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) public num: number,
-    private fb: FormBuilder,
+    fb: FormBuilder,
     public serv: GitService
   ) {
     this.commentSendForm = fb.group({
@@ -23,10 +23,6 @@ export class AddCommentComponent {
   }
   sendComment(): void {
     this.serv.postComment(this.num, this.commentSendForm.value.body);
-    // if (!this.commentSendForm.value.issueNumber) {
-    //   this.commentSendForm.get('issueNumber').setValue(this.commentSendForm.value.body);
-    // }
-    // this.serv.postComment(this.commentSendForm.value);
   }
 
   closeIssue() {
