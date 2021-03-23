@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
       setHeaders: {
         Authorization:
           'Basic ' +
-          btoa('aprricod' + ':' + '035f065a04ff95575e65b5dbba17a3d4aaf3906b'),
+          btoa('aprricod' + ':' + '93cb8b9cc8039f50b36c7cb8b3d3cff0941981b0'),
       },
     });
     return next.handle(request);

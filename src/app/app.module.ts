@@ -11,8 +11,6 @@ import { AboutModule } from './about/about.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BackButtonDirective } from './back-button.directive';
-import { CreateCommentModule } from './create-comment/create-comment.module';
-import { CreateIssueModule } from './create-issue/create-issue.module';
 import { GitIssuesModule } from './git-issues/git-issues.module';
 import { MainPageModule } from './main-page/main-page.module';
 import { MyProjectsModule } from './my-projects/my-projects.module';
@@ -35,8 +33,6 @@ import { Page404Component } from './page404/page404.component';
     MatDividerModule,
     FormsModule,
     GitIssuesModule,
-    CreateCommentModule,
-    CreateIssueModule,
   ],
   providers: [NavServiceService],
   bootstrap: [AppComponent],

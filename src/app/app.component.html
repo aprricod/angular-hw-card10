@@ -20,15 +20,16 @@
 <hr /> -->
 <div style="margin: 20px">
   <button mat-raised-button [matMenuTriggerFor]="menu">Меню</button>
-  <button mat-raised-button (click)="goToMainPage()" style="margin-left: 10px">
-    На главную
-  </button>
+
   <!-- кнопка через дерективу -->
-  <button mat-stroked-button appBackButton style="margin-left: 10px">
+  <!-- <button mat-stroked-button appBackButton style="margin-left: 10px">
     Вернуться назад
-  </button>
+  </button> -->
   <button mat-raised-button (click)="goBack()" style="margin-left: 10px">
     Назад
+  </button>
+  <button mat-raised-button (click)="goToMainPage()" style="margin-left: 10px">
+    На главную
   </button>
   <button mat-raised-button (click)="goForward()" style="margin-left: 10px">
     Вперед
@@ -44,7 +45,7 @@
     <a [routerLink]="['/projects']"
       ><button mat-menu-item>Учебные материалы</button></a
     >
-    <a [routerLink]="['/issues']"><button mat-menu-item>Issues</button></a>
+    <a [routerLink]="['/issues']"><button mat-menu-item>Итоговое задание "Issues"</button></a>
   </mat-menu>
 
   <mat-menu #myProjects="matMenu">
