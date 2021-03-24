@@ -1,8 +1,7 @@
 <form *ngIf="issueForm" [formGroup]="issueForm">
-  <div style="text-align: right">
+  <div style="text-align: right; margin-bottom: 10px">
     <button mat-raised-button style="margin: 5px" (click)="refreshIssueList()">
       Обновить список
-      <!-- <mat-icon>Новый тикет</mat-icon> -->
     </button>
     <button
       mat-raised-button
@@ -31,7 +30,6 @@
           {{ element.value[column] }}
         </td>
       </ng-container>
-
       <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
       <ng-container matColumnDef="expandedDetail">
         <td
@@ -47,7 +45,6 @@
             "
           >
             <!-- ниже вставлять код -->
-
             <div class="example-element-weight">
               <mat-form-field appearance="outline">
                 <input matInput type="text" formControlName="body"
@@ -64,9 +61,7 @@
           </div>
         </td>
       </ng-container>
-
       <!-- выше вставлять код -->
-
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
       <tr
         mat-row
@@ -83,80 +78,3 @@
     </table>
   </ng-container>
 </form>
-
-<!-- вместо этого куска вставил другой -->
-
-<!-- <div class="example-element-diagram">
-    <div class="example-element-position">
-      {{ element.value.state }}
-    </div>
-    <div class="example-element-symbol">
-      {{ element.created_at }}
-    </div>
-    <div class="example-element-name">{{ element.value.title }}</div>
-    <div class="example-element-weight">{{ element.value.url }}</div>
-    <div class="example-element-weight">
-      {{ element.value.userdata }}
-    </div>
-  </div>
-  <div class="example-element-description">
-    {{ element.value.body }}
-    <span class="example-element-description-attribution">
-      -- Автор репорта
-    </span>
-  </div>
-         <div style="margin: 10px">
-              <button
-                mat-raised-button
-                color="primary"
-                style="margin-right: 10px"
-                (click)="send()"
-              >
-                Оставить комментарий
-              </button>
-              <button
-                mat-raised-button
-                color="primary"
-                style="margin-right: 10px"
-                (click)="send()"
-              >
-                Закрыть
-              </button>
-              <button
-                mat-raised-button
-                color="primary"
-                style="margin-right: 10px"
-                (click)="send()"
-              >
-                Удалить
-              </button>
-            </div>
-                <div style="margin: 10px">
-              <button>
-                <img
-                  src="../../assets/replay-24px.svg"
-                  (click)="openDialogComment()"
-                />
-              </button>
-            </div>
-</div>
-</td>
-</ng-container> -->
-
-<!-- другой вариант -->
-<!-- <div class="example-element-weight">
-    <mat-form-field appearance="outline">
-      <input matInput type="text" formControlName="body"
-    /></mat-form-field>
-  </div>
-  <div style="margin: 10px">
-    <button>
-      <img
-        src="../../assets/replay-24px.svg"
-        (click)="openDialogComment()"
-      />
-    </button>
-  </div>
-</div>
-</td>
-</ng-container> -->
